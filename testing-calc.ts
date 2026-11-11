@@ -15,3 +15,8 @@ export function divide(a: number, b: number): number {
   }
   return a / b;
 }
+
+/** Raises base to the power of exp and returns the result. */
+export function power(base: number, exp: number): number {
+  return base ** exp;
+}

@@ -7,3 +7,11 @@ export function add(a: number, b: number): number {
 export function multiply(a: number, b: number): number {
   return a * b;
 }
+
+/** Divides a by b and returns the quotient. Throws if b is 0. */
+export function divide(a: number, b: number): number {
+  if (b === 0) {
+    throw new Error("Division by zero");
+  }
+  return a / b;
+}

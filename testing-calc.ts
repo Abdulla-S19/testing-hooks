@@ -20,3 +20,11 @@ export function divide(a: number, b: number): number {
 export function power(base: number, exp: number): number {
   return base ** exp;
 }
+
+/** Returns the square root of a. Throws if a is negative. */
+export function squareRoot(a: number): number {
+  if (a < 0) {
+    throw new Error("Square root of negative number");
+  }
+  return Math.sqrt(a);
+}

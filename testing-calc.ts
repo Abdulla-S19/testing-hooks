@@ -29,3 +29,11 @@ return values.map((v)=>square(v));
 export function roundPayment(amount:number):number{
 return Math.round(amount *100) / 100;
 }
+
+/**
+ * Multiplies all numbers in `values` together and returns the product.
+ * An empty array returns 1 (the multiplicative identity).
+ */
+export function multiplyAll(values: number[]): number {
+  return values.reduce((product, v) => product * v, 1);
+}

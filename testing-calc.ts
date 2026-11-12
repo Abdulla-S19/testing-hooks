@@ -37,3 +37,8 @@ return Math.round(amount *100) / 100;
 export function multiplyAll(values: number[]): number {
   return values.reduce((product, v) => product * v, 1);
 }
+
+export function safeDvivide(a:number , b:number) : number{
+if (b === 0) throw new Error("cannot divide by zero");
+return a / b;
+}

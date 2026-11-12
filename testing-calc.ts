@@ -72,4 +72,31 @@ export function percentOf(part: number, total: number): number {
   return (part / total) * 100;
 }
 
+/**
+ * Returns the arithmetic mean (average) of `values`.
+ * Throws if `values` is empty, since no mean is defined for an empty array.
+ */
+export function mean(values: number[]): number {
+  if (values.length === 0) throw new Error("cannot compute mean of an empty array");
+  return values.reduce((sum, v) => sum + v, 0) / values.length;
+}
+
+/**
+ * Returns the smallest number in `values`.
+ * Throws if `values` is empty.
+ */
+export function minOf(values: number[]): number {
+  if (values.length === 0) throw new Error("cannot compute minimum of an empty array");
+  return values.reduce((min, v) => (v < min ? v : min), values[0]);
+}
+
+/**
+ * Returns the largest number in `values`.
+ * Throws if `values` is empty.
+ */
+export function maxOf(values: number[]): number {
+  if (values.length === 0) throw new Error("cannot compute maximum of an empty array");
+  return values.reduce((max, v) => (v > max ? v : max), values[0]);
+}
+
 export const CALCULATOR_VERSION = "2.0.0";

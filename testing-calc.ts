@@ -17,3 +17,11 @@ export function cube(a: number): number {
 export function cubeAll(values: number[]): number[] {
   return values.map(cube);
 }
+
+export function square(a:number) : number {
+return a * a
+}
+
+export function squareAll(values:number[]) : number[]{
+return values.map((v)=>square(v));
+}

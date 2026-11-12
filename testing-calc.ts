@@ -105,3 +105,7 @@ export const CALCULATOR_VERSION = "2.0.0";
 export function rangeOf(values: number[]): number {
   return maxOf(values) - minOf(values);
 }
+
+export function clamp(value: number, min: number, max: number): number {
+  return Math.min(Math.max(value, min), max);
+}

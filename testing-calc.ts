@@ -46,3 +46,11 @@ return a / b;
 export function roundRefund(amount: number): number {
   return Math.floor(amount * 100) / 100;
 }
+
+/**
+ * Returns true when the login should be blocked, i.e. when the number of
+ * failed attempts has reached or exceeded the allowed maximum.
+ */
+export function isLoginBlocked(failedAttempts: number, maxAttempts: number): boolean {
+  return failedAttempts >= maxAttempts;
+}

@@ -13,6 +13,11 @@ export function cube(a: number): number {
   return a * a * a;
 }
 
+/** Returns the cube root of a number. */
+export function cubeRoot(a: number): number {
+  return Math.cbrt(a);
+}
+
 /** Returns a new array with the cube of each number in `values`. */
 export function cubeAll(values: number[]): number[] {
   return values.map(cube);
@@ -109,3 +114,4 @@ export function rangeOf(values: number[]): number {
 export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
+export const COPILOT_SHELL_TEST = "written by a command"

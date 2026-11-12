@@ -54,3 +54,12 @@ export function roundRefund(amount: number): number {
 export function isLoginBlocked(failedAttempts: number, maxAttempts: number): boolean {
   return failedAttempts >= maxAttempts;
 }
+
+/**
+ * Returns true when a session has expired, i.e. when strictly more than
+ * `timeoutMinutes` have elapsed between `lastActiveMs` and `nowMs`.
+ * Both timestamps are in milliseconds. Exactly `timeoutMinutes` is not expired.
+ */
+export function isSessionExpired(lastActiveMs: number, nowMs: number, timeoutMinutes: number): boolean {
+  return nowMs - lastActiveMs > timeoutMinutes * 60 * 1000;
+}

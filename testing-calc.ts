@@ -7,3 +7,13 @@ export function add(a: number, b: number): number {
 export function sq(a: number): number {
   return a * a;
 }
+
+/** Returns the cube of a number (a * a * a). */
+export function cube(a: number): number {
+  return a * a * a;
+}
+
+/** Returns a new array with the cube of each number in `values`. */
+export function cubeAll(values: number[]): number[] {
+  return values.map(cube);
+}

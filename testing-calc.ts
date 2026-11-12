@@ -67,3 +67,7 @@ export function isSessionExpired(lastActiveMs: number, nowMs: number, timeoutMin
 export function isPasswordLongEnough(password: string): boolean {
   return password.length >= 12;
 }
+
+export function percentOf(part: number, total: number): number {
+  return (part / total) * 100;
+}

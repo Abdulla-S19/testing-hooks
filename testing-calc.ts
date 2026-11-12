@@ -25,3 +25,7 @@ return a * a
 export function squareAll(values:number[]) : number[]{
 return values.map((v)=>square(v));
 }
+
+export function roundPayment(amount:number):number{
+return Math.round(amount *100) / 100;
+}

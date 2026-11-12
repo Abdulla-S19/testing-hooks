@@ -100,3 +100,8 @@ export function maxOf(values: number[]): number {
 }
 
 export const CALCULATOR_VERSION = "2.0.0";
+
+
+export function rangeOf(values: number[]): number {
+  return maxOf(values) - minOf(values);
+}

@@ -63,3 +63,7 @@ export function isLoginBlocked(failedAttempts: number, maxAttempts: number): boo
 export function isSessionExpired(lastActiveMs: number, nowMs: number, timeoutMinutes: number): boolean {
   return nowMs - lastActiveMs > timeoutMinutes * 60 * 1000;
 }
+
+export function isPasswordLongEnough(password: string): boolean {
+  return password.length >= 12;
+}

@@ -42,3 +42,7 @@ export function safeDvivide(a:number , b:number) : number{
 if (b === 0) throw new Error("cannot divide by zero");
 return a / b;
 }
+
+export function roundRefund(amount: number): number {
+  return Math.floor(amount * 100) / 100;
+}

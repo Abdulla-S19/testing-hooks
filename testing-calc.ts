@@ -114,4 +114,9 @@ export function rangeOf(values: number[]): number {
 export function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
+
+/** Returns `a` multiplied by 2. */
+export function double(a: number): number {
+  return a * 2;
+}
 export const COPILOT_SHELL_TEST = "written by a command"

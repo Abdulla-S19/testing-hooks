@@ -71,3 +71,5 @@ export function isPasswordLongEnough(password: string): boolean {
 export function percentOf(part: number, total: number): number {
   return (part / total) * 100;
 }
+
+export const CALCULATOR_VERSION = "2.0.0";

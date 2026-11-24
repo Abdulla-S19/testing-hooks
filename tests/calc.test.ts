@@ -41,3 +41,8 @@ test("multiply returns 0 when any value is 0", () => {
 test("divide handles a negative dividend", () => {
   assert.equal(divide(-9, 3), -3);
 });
+
+// write a new test case
+test("clamp returns the lower limit when value is below the range", () => {
+  assert.equal(clamp(-5, 0, 10), 0);
+});

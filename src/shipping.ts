@@ -4,20 +4,23 @@ export interface ShippingInput {
   express: boolean
 }
 
-export const BASE_RATE_PER_KG = 12
-export const RATE_PER_KM = 0.8
-export const EXPRESS_SURCHARGE = 75
+export const SHIPPING_RATES = {
+  perKg: 12,
+  perKm: 0.8,
+  expressSurcharge: 75,
+}
+
+const roundToPaise = (amount: number) => Math.round(amount * 100) / 100
 
 export function weightChargeOf(input: ShippingInput): number {
-  return input.weightKg * BASE_RATE_PER_KG
+  return roundToPaise(input.weightKg * SHIPPING_RATES.perKg)
 }
 
 export function distanceChargeOf(input: ShippingInput): number {
-  return input.distanceKm * RATE_PER_KM
+  return roundToPaise(input.distanceKm * SHIPPING_RATES.perKm)
 }
 
 export function shippingCostOf(input: ShippingInput): number {
-  const charge = weightChargeOf(input) + distanceChargeOf(input)
-  const withExpress = input.express ? charge + EXPRESS_SURCHARGE : charge
-  return Math.round(withExpress * 100) / 100
+  const expressCharge = input.express ? SHIPPING_RATES.expressSurcharge : 0
+  return roundToPaise(weightChargeOf(input) + distanceChargeOf(input) + expressCharge)
 }

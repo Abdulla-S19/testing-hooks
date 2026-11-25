@@ -1,14 +1,15 @@
 export interface PriceInput {
   basePrice: number
   quantity: number
-  customerTier: 'standard' | 'silver' | 'gold'
+  customerTier: 'standard' | 'silver' | 'gold' | 'platinum'
   couponCode?: string
 }
 
 export const TIER_DISCOUNT = {
   standard: 0,
-  silver: 0.05,
-  gold: 0.1,
+  silver: 0.04,
+  gold: 0.08,
+  platinum: 0.12,
 }
 
 export function subtotalOf(input: PriceInput): number {
@@ -16,8 +17,8 @@ export function subtotalOf(input: PriceInput): number {
 }
 
 export function tierDiscountOf(input: PriceInput): number {
-  const rate = TIER_DISCOUNT[input.customerTier]
-  return subtotalOf(input) * rate
+  const tierRate = TIER_DISCOUNT[input.customerTier] ?? 0
+  return subtotalOf(input) * tierRate
 }
 
 const COUPONS: Record<string, (subtotal: number) => number> = {

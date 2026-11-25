@@ -21,12 +21,13 @@ export function tierDiscountOf(input: PriceInput): number {
 }
 
 const COUPONS: Record<string, (subtotal: number) => number> = {
-  WELCOME10: (subtotal) => subtotal * 0.1,
-  FLAT50: (subtotal) => Math.min(50, subtotal),
+  WELCOME10: (subtotal) => Math.round(subtotal * 0.1 * 100) / 100,
+  FLAT50: (subtotal) => Math.min(50, Math.max(0, subtotal)),
 }
 
 export function couponDiscountOf(input: PriceInput): number {
-  const coupon = input.couponCode ? COUPONS[input.couponCode.toUpperCase()] : undefined
+  const code = input.couponCode?.trim().toUpperCase()
+  const coupon = code ? COUPONS[code] : undefined
   return coupon ? coupon(subtotalOf(input)) : 0
 }
 

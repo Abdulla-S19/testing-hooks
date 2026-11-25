@@ -11,4 +11,4 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: exit 1
+      - run: echo "deploying to production"

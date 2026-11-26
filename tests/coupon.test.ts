@@ -25,6 +25,7 @@ test("applyCoupon throws for an expired coupon", () => {
 
 test("applyCoupon rejects an order below the minimum", () => {
   assert.throws(() => applyCoupon(coupons, "SAVE10", 19.99, "2026-12-01"), { message: "Order total must be at least 20" });
+  assert.throws(() => applyCoupon(coupons, "SAVE10", 0.5, "2026-12-01"), { message: "Order total must be at least 20" });
 });
 
 test("parseCoupons rejects invalid JSON", () => {

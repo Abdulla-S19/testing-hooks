@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "tests pass"
+      - run: echo "tests fail" && exit 1
   deploy:
     needs: test
     runs-on: ubuntu-latest

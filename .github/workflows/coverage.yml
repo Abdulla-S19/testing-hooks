@@ -1,0 +1,34 @@
+name: Tests with coverage
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      # Node 24 runs the .ts files and tests as they are; its own coverage writes an lcov report.
+      - name: Run tests with coverage
+        run: |
+          mkdir -p coverage
+          node --test \
+            --experimental-test-coverage \
+            --test-coverage-exclude='**/*.test.ts' \
+            --test-coverage-exclude='**/*.spec.ts' \
+            --test-reporter=spec --test-reporter-destination=stdout \
+            --test-reporter=lcov --test-reporter-destination=coverage/lcov.info \
+            'tests/**/*.test.ts' 'src/**/*.spec.ts'
+      # Upload the report even when a test fails, so coverage can still be read.
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/lcov.info
+          if-no-files-found: error
+          retention-days: 30
